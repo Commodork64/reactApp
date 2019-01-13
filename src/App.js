@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Login from './Login';
 import NavBar from './NavBar';
-import N64Logo from './Content/N64Logo.png';
+import N64Logo from './Content/N64Logo.svg';
 import './App.css';
 import MainPageIcon from './MainPageIcon';
 
