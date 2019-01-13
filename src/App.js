@@ -17,7 +17,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <img src={N64Logo} />
+        <div id="imageBox">
+          <img src={N64Logo} />
+        </div>
         <Login logins={this.state.login}/>
         <NavBar />
         <MainPageIcon />
