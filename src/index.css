@@ -6,58 +6,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url("./Content/N64Logo.png");
-  background-repeat: no-repeat;
-  background-position-x: 20%;
-  background-position-y: -5%;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-#title {
-  position: relative;
-  left: 30%;
-} 
-
-#usernameForm {
-  position: absolute;
-  top: 50px;
-  right: 0px;
-  height: 25px;
-  width: 200px;
-}
-
-#passwordForm {
-  position: absolute;
-  top: 0x;
-  right: 0;
-  height: 25px;
-  width: 200px;
-}
-
-#parent {
-  left: 1400px;
-  top: 600px;
-  width:300px;
-  height:200px;
-  position:relative;
-}
-
-h1 {
-  font-family: 'times-new-roman';
-  position: relative;
-  top: 20px;
-}
-
-#top, #bottom, #left, #right {
-  opacity: 0.3;
-	background: black;
-  position: fixed;
-  top: 0;
-  right: 0%;
-  bottom: 0;
-	width: 650px;
-	}
