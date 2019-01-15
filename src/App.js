@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Login from './Login';
+import Home from './Home';
 import NavBar from './NavBar';
-import N64Logo from './Content/N64Logo.svg';
 import './App.css';
 import MainPageIcon from './MainPageIcon';
 
@@ -17,10 +17,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div id="imageBox">
-          <img src={N64Logo} />
-        </div>
         <Login logins={this.state.login}/>
+        <Home />
         <NavBar />
         <MainPageIcon />
       </div>
