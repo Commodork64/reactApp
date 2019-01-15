@@ -16,7 +16,7 @@ const NavBar = () => {
         <Router>
             <div className="NavBar">
                 <nav>
-                    <ul>
+                    <ul className="NavBar_ul">
                         <li className="NavBarLinks"><Link to="/">Home</Link></li>
                         <li className="NavBarLinks"><Link to="/User">User</Link></li>
                         <li className="NavBarLinks"><Link to="/Game">Game</Link></li>

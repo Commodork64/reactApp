@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import Login from './Login';
-import Home from './Home';
 import NavBar from './NavBar';
 import './App.css';
-import MainPageIcon from './MainPageIcon';
 
 class App extends Component {
   state = {
@@ -17,10 +15,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Login logins={this.state.login}/>
-        <Home />
         <NavBar />
-        <MainPageIcon />
       </div>
     );
   }
