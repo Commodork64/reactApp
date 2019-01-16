@@ -8,7 +8,7 @@ const Home = () => {
     return (
         <div className="Home_img">
             <div id="imageBox">
-                <img src={N64Logo}></img>
+                <img className="homePic" src={N64Logo}></img>
             </div>
             <MainPageIcon />
         </div>

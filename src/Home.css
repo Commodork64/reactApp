@@ -3,9 +3,9 @@
     justify-content: center;
 }
 
-img {
+.homePic {
     width: 90vw;
-    height: 90vh;
+    height: 85vh;
     padding: 70px;
     margin: auto;
 }

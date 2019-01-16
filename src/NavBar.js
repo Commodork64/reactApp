@@ -22,6 +22,7 @@ const NavBar = () => {
                         <li className="NavBarLinks"><Link to="/Game">Game</Link></li>
                         <li className="NavBarUserName">Logout/login</li>
                         <li className="NavBarSearchBar"><input type="text" placeholder="search..."></input></li>
+                        <li className="NavBarButton"><button>submit</button></li>
                     </ul>
 
                     <Route exact path="/" component={Home}/>
