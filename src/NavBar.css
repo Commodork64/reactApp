@@ -33,6 +33,15 @@
     color: #fff;
 }
 
+.NavBarSearchBar {
+    float: left;
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-transform: uppercase;
+    color: #fff;
+}
+
 a {
     color: #fff;
 }
