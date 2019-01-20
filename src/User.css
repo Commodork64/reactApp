@@ -1,21 +1,51 @@
 .userDetails {
-    position: fixed;
-    right: 0;
+    position: sticky;
+    top: 20%;
+    float: right;
     padding: 2em;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: 700;
+    border: 0.01em;
+    width: 20%;
 }
 
-.pictureContainer {
-    position: absolute;
+.userDetailsTitle {
+    display: flex;
+    text-align: center;
+}
+
+.UDListStyle {
+    display: flex;
+    border-left-style: solid;
+    border-color: #4d4d4d;
+    flex-wrap:wrap;
+    flex-direction:row;;
+}
+
+.UDListItem{
+    flex:1 1 auto;
+    padding: 10px;
+    width:80%;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+}
+
+.userNameTitle {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-style: italic;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 5em;
+    white-space: nowrap;
     width: 10vw;
     height: 10vh;
-    padding: 70px;
-    margin: auto;
+    padding: 30px;
+    margin: 0;
 }
 
-.favouriteGame {
-    position: fixed;
-    width: 40vw;
-    height: 40vh;
-    right: 0;
-    margin: auto;
-}
+.hrShadow { 
+    height: 12px;
+    border: 0; 
+    box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
+ }
