@@ -49,3 +49,32 @@
     border: 0; 
     box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
  }
+
+ .userDetailsContainer {
+    float: left;
+    padding: 2em;
+ }
+
+ .userList {
+    list-style: none;
+ }
+
+ .userListItem {
+     display: inline;
+     padding: 16px;
+     font-family: 'Nanum Gothic', sans-serif;
+     font-size: 36px;
+ }
+
+ .userListItemButton {
+    display: inline;
+    padding: 16px;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 36px;
+    float: right;
+ }
+
+ img {
+     height:150px;
+     width: 200px;
+ }
