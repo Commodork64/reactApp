@@ -11,7 +11,7 @@ class GetUserData extends Component {
       .then(res => {
         const userData =  res.data;
         this.setState({ userData })
-      })
+      })  
       }
 
   render() {
