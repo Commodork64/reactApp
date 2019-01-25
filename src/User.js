@@ -22,9 +22,9 @@ class User extends Component {
         let userGames = this.state.userData.map((game, i) => (
             <ul className="userList">
                 <li className="userListItem"><img src={GamePic}></img></li>
-                <li className="userListItem">Game name {userData.games[0].name}</li>
-                <li className="userListItem">Release Date: {userData.games[0].releaseDate}</li>
-                <li className="userListItem">Genre: {userData.games[0].genre}</li>
+                <li className="userListItem">Game name {userData.games[i].name}</li>
+                <li className="userListItem">Release Date: {userData.games[i].releaseDate}</li>
+                <li className="userListItem">Genre: {userData.games[i].genre}</li>
                 <li className="userListItemButton"><button>Remove</button> </li>
             </ul>
         ));
