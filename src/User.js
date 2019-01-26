@@ -17,35 +17,24 @@ class User extends Component {
     }
 
     componentDidMount() {
-        axios.get("localhost:8080/SoloProjectCalin/api/user/getAllUsers")
+        axios.get("http://localhost:8080/SoloProjectCalin/api/user/getAllUsers")
             .then(response => {
                 console.log("hi");
                 console.log(response);
                 this.setState({ userData: response.data})
             })
         }
-        
-        // axios({
-        //     method: 'get',
-        //     url: ('localhost:8080/SoloProjectCalin/api/user/getAllUsers')
-        // })
-        // .then(response => {
-        //     console.log("FUIASHDUIFH");
-        //     const rawData = response.data;
-
-        //     this.setState({ userData: rawData });
-        // })
 
     render() {
         
-        let userGames = this.state.userData.map((game, i) => (
-            <ul className="userList">
-                <li className="userListItem">Game name {game.gameName}</li>
-                <li className="userListItem">Release Date: {game.releaseYear}</li>
-                <li className="userListItem">Genre: {game.genre}</li>
-                <li className="userListItemButton"><button>Remove</button> </li>
-            </ul>
-        ));
+        // let userGames = this.state.userData.map((game, i) => (
+        //     <ul className="userList">
+        //         <li className="userListItem">Game name {game.gameName}</li>
+        //         <li className="userListItem">Release Date: {game.releaseYear}</li>
+        //         <li className="userListItem">Genre: {game.genre}</li>
+        //         <li className="userListItemButton"><button>Remove</button> </li>
+        //     </ul>
+        // ));
 
         return (
         <div className="User">
@@ -62,7 +51,7 @@ class User extends Component {
                         </ul>
                     </section>
                     <section className="userListContainer">
-                        {userGames}
+                        {/* {userGames} */}
                     </section>
                 </div>
     );
