@@ -1,47 +1,64 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './User.css';
-import GamePic from './Content/Mario64.png';
-import GetUserData from './GetUserData.js';
+import axios from 'axios';
 
 class User extends Component {
 
-    state = {
-        userData: []
+    
+    constructor() {
+
+        super();
+
+        this.state = {
+            userData: []
+        }
+        
+        // <li className="userListItem"><img src={game.gamePic}></img></li>
     }
 
-    getDatData = () => {
-        axios.get("localhost:8000/getUserData")
-            .then(res => {
-                const userData = res.data;
-                this.setState({ userData })
+    componentDidMount() {
+        axios.get("localhost:8080/SoloProjectCalin/api/user/getAllUsers")
+            .then(response => {
+                console.log("hi");
+                console.log(response);
+                this.setState({ userData: response.data})
             })
-    }
+        }
+        
+        // axios({
+        //     method: 'get',
+        //     url: ('localhost:8080/SoloProjectCalin/api/user/getAllUsers')
+        // })
+        // .then(response => {
+        //     console.log("FUIASHDUIFH");
+        //     const rawData = response.data;
+
+        //     this.setState({ userData: rawData });
+        // })
 
     render() {
         
         let userGames = this.state.userData.map((game, i) => (
             <ul className="userList">
-                <li className="userListItem"><img src={GamePic}></img></li>
-                <li className="userListItem">Game name {userData.games[i].name}</li>
-                <li className="userListItem">Release Date: {userData.games[i].releaseDate}</li>
-                <li className="userListItem">Genre: {userData.games[i].genre}</li>
+                <li className="userListItem">Game name {game.gameName}</li>
+                <li className="userListItem">Release Date: {game.releaseYear}</li>
+                <li className="userListItem">Genre: {game.genre}</li>
                 <li className="userListItemButton"><button>Remove</button> </li>
             </ul>
         ));
 
         return (
         <div className="User">
-                    <GetUserData />
                     <section>
-                        <h2 className="userNameTitle">(name)'s' List</h2>
+                        {console.log(this.state.userData)}
+                        <h2 className="userNameTitle">{ JSON.stringify(this.state.userData.userName)}'s' List</h2>
                         <hr className="hrShadow" />
                     </section>
                     <section className="userDetails">
                         <ul className="UDListStyle">
                             <h3 className="userDetailsTitle">Statistics</h3>
-                            <li className="UDListItem">username: {userData.name}</li>
-                            <li className="UDListItem">age: 25 {userData.dateOfBirth} </li>
-                            <li className="UDListItem">Games Played: {userData.gamesPlayed}</li>
+                            <li className="UDListItem">Username: {this.state.userData.userName}</li>
+                            <li className="UDListItem">Date of Birth: {this.state.userData.dateOfBirth} </li>
                         </ul>
                     </section>
                     <section className="userListContainer">
