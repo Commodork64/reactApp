@@ -1,11 +1,53 @@
-#imageBox {
+.inputBoxContainer {
     display: flex;
-    justify-content: center;
+    margin: 0;
+    padding: 1em;
 }
 
-.homePic {
-    width: 90vw;
-    height: 85vh;
-    padding: 70px;
-    margin: auto;
+.title {
+    text-align: center;
 }
+
+ .homePageContainer {
+     display: flex;
+     flex-direction: row;
+     flex-wrap: nowrap;
+     margin-top: 70px;
+     width: 100%;
+ }
+
+ .createContainer {
+    width: 20%;
+ }
+
+ .createFormGroup label {
+    min-width: 100px;
+ }
+
+ /* .createFormGroup input {
+    flex: 1 1 auto;
+    display: block;
+ } */
+
+ .createFormGroup button {
+    margin-left: auto;
+    margin-right: 0;
+ }
+
+ .createFormGroup {
+    display: flex;
+    flex-direction: row;
+ }
+
+ .deleteContainer {
+    width: 20%;
+ }
+
+ .imgContainer {
+     width: 60%;
+ }
+
+ .homePageContainer section {
+    margin-left: 15px;
+    margin-right: 15px;
+ }

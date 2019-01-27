@@ -19,7 +19,7 @@
     border-left-style: solid;
     border-color: #4d4d4d;
     flex-wrap:wrap;
-    flex-direction:row;;
+    flex-direction:row;
 }
 
 .UDListItem{
@@ -74,7 +74,7 @@
 
  }
 
- img {
+ .User img {
      height:150px;
      width: 200px;
  }

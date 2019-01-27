@@ -12,7 +12,7 @@ class User extends Component {
             userData: [{ }]
         }
         
-        // <li className="userListItem"><img src={game.gamePic}></img></li>
+        //<li className="userListItem"><img src={game.gamePic}></img></li>
         
         axios.get("http://localhost:8080/SoloProjectCalin/api/user/getAllUsers")
             .then(response => {
@@ -20,9 +20,9 @@ class User extends Component {
             })
         }
 
-    removeListEntry() {
-        console.log("I'm being called!")
-    }
+        removeListEntry() {
+            console.log("I'm being called!")
+        }
 
     render() {
         {console.log(this.state.userData[0].userName)}
@@ -43,13 +43,13 @@ class User extends Component {
                 })
                }
               </div>
-            )}
+            )});
 
         return (
         <div className="User">
                     <section>
                         {console.log(this.state.userData)}
-                        <h2 className="userNameTitle">{ this.state.userData[0].userName} s' List</h2>
+                        <h2 className="userNameTitle">{ this.state.userData[0].userName} 's List</h2>
                         <hr className="hrShadow" />
                     </section>
                     <section className="userDetails">
