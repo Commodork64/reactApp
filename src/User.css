@@ -63,7 +63,7 @@
      display: inline;
      padding: 16px;
      font-family: 'Nanum Gothic', sans-serif;
-     font-size: 36px;
+     font-size: 30px;
  }
 
  .userListItemButton {
@@ -71,7 +71,7 @@
     padding: 16px;
     font-family: 'Nanum Gothic', sans-serif;
     font-size: 36px;
-    float: right;
+
  }
 
  img {
