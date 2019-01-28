@@ -40,7 +40,7 @@
     white-space: nowrap;
     width: 10vw;
     height: 10vh;
-    padding: 30px;
+    padding: 0.9em;
     margin: 0;
 }
 
@@ -63,7 +63,7 @@
      display: inline;
      padding: 16px;
      font-family: 'Nanum Gothic', sans-serif;
-     font-size: 30px;
+     font-size: 24px;
  }
 
  .userListItemButton {

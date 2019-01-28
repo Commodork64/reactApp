@@ -29,17 +29,14 @@ class User extends Component {
                 (obj && obj[key] !== 'undefined') ? obj[key] : undefined, nestedObj);
         }
 
-        const gameName = getNestedObject(this.state.userData, ['games', 0, 'gameName']);
-        const releaseYear = getNestedObject(this.state.userData, ['games', 'releaseYear']);
-        const genre = getNestedObject(this.state.userData, ['games', 'genre']);
-
         let userGames = this.state.userData.map((game, i) => {
             return (
                 <div>
                     <ul>
-                        <li>{gameName}</li>
-                        <li>{releaseYear}</li>
-                        <li>{genre}</li>
+                        <li className="userListItem">Title: {getNestedObject(this.state.userData[0], ['games', i, 'gameName'])}</li>
+                        <li className="userListItem">Release Date: {getNestedObject(this.state.userData[0], ['games', i, 'releaseYear'])}</li>
+                        <li className="userListItem">Genre: {getNestedObject(this.state.userData[0], ['games', i, 'genre'])}</li>
+                        <li className="userListItemButton"><button>Remove</button></li>
                     </ul>
                 </div>
             );
