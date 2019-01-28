@@ -9,61 +9,62 @@ class User extends Component {
         super();
 
         this.state = {
-            userData: [{ }]
+            userData: [{}]
         }
-        
-        //<li className="userListItem"><img src={game.gamePic}></img></li>
-        
+
         axios.get("http://localhost:8080/SoloProjectCalin/api/user/getAllUsers")
             .then(response => {
-                this.setState({ userData: response.data})
+                this.setState({ userData: response.data })
             })
-        }
+    }
 
-        removeListEntry() {
-            console.log("I'm being called!")
-        }
+    removeListEntry() {
+        console.log("I'm being called!")
+    }
 
     render() {
-        {console.log(this.state.userData[0].userName)}
+        
+        const gameName = getNestedObject(this.state.userData, ['games', 0, 'gameName']);
+        const releaseYear = getNestedObject(this.state.userData, ['games', 'releaseYear']);
+        const genre = getNestedObject(this.state.userData, ['games', 'genre']);
 
-        let userGames = this.state.userData.map((user, i) => {
+        let userGames = this.state.userData.map((game, i) => {
             return (
-              <div key={i}>
-                <ul >{user.value}</ul>
-               {
-                user.games.map((game, i) => {
-                  return (
-                     <ul className="userList">
-                         <li>{game[i].gameName}</li>
-                         <li>{game[i].releaseYear}</li>
-                         <li>{game[i].genre}</li>
-                     </ul>
-                  )
-                })
-               }
-              </div>
-            )});
+                <div>
+                    <ul>
+                        <li>{game.gameName}</li>
+                        <li>{game.releaseYear}</li>
+                        <li>{game.genre}</li>
+                    </ul>
+                </div>
+            );
+        })
+    }
 
-        return (
-        <div className="User">
-                    <section>
-                        {console.log(this.state.userData)}
-                        <h2 className="userNameTitle">{ this.state.userData[0].userName} 's List</h2>
-                        <hr className="hrShadow" />
-                    </section>
-                    <section className="userDetails">
-                        <ul className="UDListStyle">
-                            <h3 className="userDetailsTitle">Statistics</h3>
-                            <li className="UDListItem">Username: {this.state.userData[0].userName}</li>
-                            <li className="UDListItem">Date of Birth: {this.state.userData[0].dateOfBirth} </li>
-                        </ul>
-                    </section>
-                    <section className="userListContainer">
-                        {userGames}
-                    </section>
+    return(
+        <div className = "User" >
+            <section>
+                {console.log(this.state.userData)}
+                <h2 className="userNameTitle">{this.state.userData[0].userName} 's List</h2>
+                <hr className="hrShadow" />
+            </section>
+            <section className="userDetails">
+                <ul className="UDListStyle">
+                    <h3 className="userDetailsTitle">Statistics</h3>
+                    <li className="UDListItem">Username: {this.state.userData[0].userName}</li>
+                    <li className="UDListItem">Date of Birth: {this.state.userData[0].dateOfBirth} </li>
+                </ul>
+            </section>
+            <section className="userListContainer">
+                {this.gameName}
+            </section>
                 </div>
         );
+
+        const getNestedObject = (nestedObj, pathArr) => {
+            return pathArr.reduce((obj, key) =>
+                (obj && obj[key] !== 'undefined') ? obj[key] : undefined, nestedObj);
+        }
     }
 }
 

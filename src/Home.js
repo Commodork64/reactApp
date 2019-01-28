@@ -12,17 +12,12 @@ class Home extends Component {
 
         this.state = {
             userid: '',
-            userData: [{
+            userDataToSend: [{
                 userName: "name",
                 dateOfBirth: "date",
                 password: "superSecure"
-            }]
+            }],
         }
-
-        axios.post('http://localhost:8080/SoloProjectCalin/api/user/addUser', { user: this.state.userData })
-            .then(response => {
-                console.log(response);
-            })
 
     }
     render() {
@@ -65,15 +60,15 @@ class Home extends Component {
     }
 
     handleNameChange = event => {
-        this.state.userData[0].userName = event.target.value;
+        this.state.userDataToSend[0].userName = event.target.value;
     }
 
     handleBirthDateChange = event => {
-        this.state.userData[0].dateOfBirth = event.target.value;
+        this.state.userDataToSend[0].dateOfBirth = event.target.value;
     }
 
     handlePasswordChange = event => {
-        this.state.userData[0].password = event.target.value;
+        this.state.userDataToSend[0].password = event.target.value;
     }
 
     deleteThisUser = event => {
@@ -87,7 +82,10 @@ class Home extends Component {
     }
 
     createThisUser = event => {
-        console.log("works");
+        axios.post('http://localhost:8080/SoloProjectCalin/api/user/addUser', { user: this.state.userDataToSend })
+            .then(response => {
+                console.log(response);
+            })
     }
 
 }
