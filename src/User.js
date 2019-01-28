@@ -23,7 +23,12 @@ class User extends Component {
     }
 
     render() {
-        
+
+        const getNestedObject = (nestedObj, pathArr) => {
+            return pathArr.reduce((obj, key) =>
+                (obj && obj[key] !== 'undefined') ? obj[key] : undefined, nestedObj);
+        }
+
         const gameName = getNestedObject(this.state.userData, ['games', 0, 'gameName']);
         const releaseYear = getNestedObject(this.state.userData, ['games', 'releaseYear']);
         const genre = getNestedObject(this.state.userData, ['games', 'genre']);
@@ -32,14 +37,13 @@ class User extends Component {
             return (
                 <div>
                     <ul>
-                        <li>{game.gameName}</li>
-                        <li>{game.releaseYear}</li>
-                        <li>{game.genre}</li>
+                        <li>{gameName}</li>
+                        <li>{releaseYear}</li>
+                        <li>{genre}</li>
                     </ul>
                 </div>
             );
         })
-    }
 
     return(
         <div className = "User" >
@@ -56,15 +60,11 @@ class User extends Component {
                 </ul>
             </section>
             <section className="userListContainer">
-                {this.gameName}
+                {userGames}
             </section>
                 </div>
         );
 
-        const getNestedObject = (nestedObj, pathArr) => {
-            return pathArr.reduce((obj, key) =>
-                (obj && obj[key] !== 'undefined') ? obj[key] : undefined, nestedObj);
-        }
     }
 }
 
