@@ -18,8 +18,11 @@ class User extends Component {
             })
     }
 
-    removeListEntry() {
-        console.log("I'm being called!")
+    removeListEntry(itemToRemove) {
+        axios.put('http://localhost:8080/SoloProjectCalin/api/user/updateUser/${this.userData.userid}')
+        .then(response => {
+            this.setState({userData: response.data})
+        })
     }
 
     render() {
@@ -29,6 +32,8 @@ class User extends Component {
                 (obj && obj[key] !== 'undefined') ? obj[key] : undefined, nestedObj);
         }
 
+        console.log(getNestedObject(this.state.userData[0], ['games', 0]));
+
         let userGames = this.state.userData.map((game, i) => {
             return (
                 <div>
@@ -36,7 +41,7 @@ class User extends Component {
                         <li className="userListItem">Title: {getNestedObject(this.state.userData[0], ['games', i, 'gameName'])}</li>
                         <li className="userListItem">Release Date: {getNestedObject(this.state.userData[0], ['games', i, 'releaseYear'])}</li>
                         <li className="userListItem">Genre: {getNestedObject(this.state.userData[0], ['games', i, 'genre'])}</li>
-                        <li className="userListItemButton"><button>Remove</button></li>
+                        <li className="userListItemButton"><button onClick={this.removeListEntry(i)}>Remove</button></li>
                     </ul>
                 </div>
             );

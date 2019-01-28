@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './Home.css';
 import N64Logo from './Content/N64Logo.svg';
-import MainPageIcon from './MainPageIcon';
 import * as axios from 'axios';
 
 class Home extends Component {
@@ -21,6 +20,7 @@ class Home extends Component {
 
     }
     render() {
+
         return (
             <div className="homePageContainer">
                 <section className="createContainer">
@@ -37,13 +37,17 @@ class Home extends Component {
                         <input className="inputBox" type="password" onChange={this.handlePasswordChange}></input>
                     </div>
                     <div className="createFormGroup">
+                        <label>ID</label>
+                        <input className="inputBox" type="text" onChange={this.handleIDChange}></input>
+                    </div>
+                    <div className="createFormGroup">
                         <button onClick={this.createThisUser}>Create User</button>
+                        <button onClick={this.updateThisUser}>Update User</button>
                     </div>
                 </section>
 
                 <section className="imgContainer">
                     <img src={N64Logo}></img>
-                    {/* <MainPageIcon /> */}
                 </section>
 
                 <section className="deleteContainer">
@@ -86,6 +90,18 @@ class Home extends Component {
             .then(response => {
                 console.log(response);
             })
+    }
+
+    updateThisUser = event => {
+        axios({
+            method: 'put',
+            url: 'http://localhost:8080/SoloProjectCalin/api/user/updateUser/' + this.state.userid,
+            data: {
+                userName: this.state.userName,
+                dateOfBirth: this.state.dateOfBirth,
+                password: this.state.password
+            }
+        })
     }
 
 }
