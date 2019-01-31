@@ -26,15 +26,15 @@ class Home extends Component {
                 <section className="createContainer">
                     <div className="createFormGroup">
                         <label>Username</label>
-                        <input className="inputBox" type="text" onChange={this.handleNameChange}></input>
+                        <input className="inputBox" id="createInput1" type="text" onChange={this.handleNameChange}></input>
                     </div>
                     <div className="createFormGroup">
                         <label>Date of Birth</label>
-                        <input className="inputBox" type="text" onChange={this.handleBirthDateChange}></input>
+                        <input className="inputBox" id="createInput2" type="text" onChange={this.handleBirthDateChange}></input>
                     </div>
                     <div className="createFormGroup">
                         <label>Password</label>
-                        <input className="inputBox" type="password" onChange={this.handlePasswordChange}></input>
+                        <input className="inputBox" id="createInput3" type="password" onChange={this.handlePasswordChange}></input>
                     </div>
                     <div className="createFormGroup">
                         <label>ID</label>
@@ -64,15 +64,15 @@ class Home extends Component {
     }
 
     handleNameChange = event => {
-        this.state.userDataToSend[0].userName = event.target.value;
+        this.state.userDataToSend.userName = event.target.value;
     }
 
     handleBirthDateChange = event => {
-        this.state.userDataToSend[0].dateOfBirth = event.target.value;
+        this.state.userDataToSend.dateOfBirth = event.target.value;
     }
 
     handlePasswordChange = event => {
-        this.state.userDataToSend[0].password = event.target.value;
+        this.state.userDataToSend.password = event.target.value;
     }
 
     deleteThisUser = event => {
@@ -86,11 +86,15 @@ class Home extends Component {
     }
 
     createThisUser = event => {
-        axios.post('http://localhost:8080/SoloProjectCalin/api/user/addUser', { user: this.state.userDataToSend })
-            .then(response => {
+        axios.post('http://localhost:8080/SoloProjectCalin/api/user/addUser/',  {
+                userName: this.state.userName,
+                dateOfBirth: this.state.dateOfBirth,
+                password: this.state.password
+            })
+            .then(function(response) {
                 console.log(response);
             })
-    }
+        }
 
     updateThisUser = event => {
         axios({
