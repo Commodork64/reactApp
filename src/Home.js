@@ -13,7 +13,7 @@ class Home extends Component {
             userid: '',
             userName: "name",
             dateOfBirth: "date",
-            password: "superSecure"
+            password: "superSecure",
         }
 
     }
@@ -49,9 +49,11 @@ class Home extends Component {
                 </section>
 
                 <section className="deleteContainer">
-                    <label>deleteUserByID</label>
-                    <input className="inputBox" type="text" onChange={this.handleIDChange}></input>
-                    <button onClick={this.deleteThisUser}>Delete User</button>
+                    <div>
+                        <label>deleteUserByID</label>
+                        <input className="inputBox" type="text" onChange={this.handleIDChange}></input>
+                        <button onClick={this.deleteThisUser}>Delete User</button>
+                    </div>
                 </section>
             </div>
         );
@@ -79,7 +81,8 @@ class Home extends Component {
 
         axios.delete(`http://localhost:8080/SoloProjectCalin/api/user/removeUser/${this.state.userid}`)
             .then(response => {
-                console.log("deleted item.");
+                window.alert(response.data);
+                console.log(response);
             })
     }
 
@@ -90,21 +93,22 @@ class Home extends Component {
                 password: this.state.password
             })
             .then(function(response) {
+                window.alert(response.data);
                 console.log(response);
             })
         }
 
     updateThisUser = event => {
-        axios({
-            method: 'put',
-            url: 'http://localhost:8080/SoloProjectCalin/api/user/updateUser/' + this.state.userid,
-            data: {
+        axios.put('http://localhost:8080/SoloProjectCalin/api/user/updateUser/' + this.state.userid,  {
                 userName: this.state.userName,
                 dateOfBirth: this.state.dateOfBirth,
                 password: this.state.password
-            }
-        })
-    }
+            })
+            .then(function(response) {
+                window.alert(response.data);
+                console.log(response);
+            })
+        }
 
 }
 
