@@ -22,10 +22,7 @@ class Game extends Component {
     }
 
     AddListEntry(itemToRemove) {
-        // axios.put('http://localhost:8080/SoloProjectCalin/api/user/updateUser/${this.userData.userid}')
-        // .then(response => {
-        //     this.setState({userData: response.data})
-        // })
+        // ToBeImplemented
     }
 
     removeDuplicates(array) {
@@ -34,38 +31,38 @@ class Game extends Component {
 
         for (let i = 0; i < len; i++) {
             if (!returnValue.includes(array[i])) {
+                console.log(this.uniqueGames);
                 returnValue.push(array[i])
             }
         }
         return returnValue;
     }
 
-        render() {
+    render() {
 
-            let uniqueGames = this.removeDuplicates(this.state.gameData);
-            console.log(uniqueGames);
+        let uniqueGames = this.removeDuplicates(this.state.gameData);
 
-            let gameList = uniqueGames.map((game, i) => {
-                return (
-                    <div>
-                        <ul className="gameList">
-                            <li className="gameListItem">Title: {game.gameName} </li>
-                            <li className="userListItem">Release Date: {game.releaseYear} </li>
-                            <li className="userListItem">Genre: {game.genre} </li>
-                            <li className="userListItemButton"><button onClick={this.AddListEntry(i)}>AddToList</button></li>
-                        </ul>
-                    </div>
-                );
-            })
-
+        let gameList = uniqueGames.map((game, i) => {
             return (
-                <div className="Game">
+                <div>
                     <ul>
-                        <li className="gameListItem">{gameList}</li>
+                        <li className="userListItem">Title: {game.gameName} </li>
+                        <li className="userListItem">Release Date: {game.releaseYear} </li>
+                        <li className="userListItem">Genre: {game.genre} </li>
+                        <li className="userListItemButton"><button onClick={this.AddListEntry(i)}>AddToList</button></li>
                     </ul>
                 </div>
             );
-        }
-    }
+        })
 
-    export default Game;
+        return (
+            <div className="Game">
+                <ul>
+                    <li className="gameListItem">{gameList}</li>
+                </ul>
+            </div>
+        );
+    }
+}
+
+export default Game;

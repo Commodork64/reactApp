@@ -31,7 +31,7 @@ class User extends Component {
 
         console.log(getNestedObject(this.state.userData[0], ['games', 0]));
 
-        let userGames = this.state.userData.map((user, i) => {
+        let userGames = this.state.userData.map(( user, i) => {
             return (
                 <div>
                     <ul>
