@@ -11,11 +11,9 @@ class Home extends Component {
 
         this.state = {
             userid: '',
-            userDataToSend: [{
-                userName: "name",
-                dateOfBirth: "date",
-                password: "superSecure"
-            }],
+            userName: "name",
+            dateOfBirth: "date",
+            password: "superSecure"
         }
 
     }
@@ -64,15 +62,15 @@ class Home extends Component {
     }
 
     handleNameChange = event => {
-        this.state.userDataToSend.userName = event.target.value;
+        this.setState({ userName: event.target.value});
     }
 
     handleBirthDateChange = event => {
-        this.state.userDataToSend.dateOfBirth = event.target.value;
+        this.setState({ dateOfBirth: event.target.value});
     }
 
     handlePasswordChange = event => {
-        this.state.userDataToSend.password = event.target.value;
+        this.setState({ password: event.target.value});
     }
 
     deleteThisUser = event => {
