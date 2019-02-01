@@ -81,7 +81,8 @@ class Home extends Component {
 
         axios.delete(`http://localhost:8080/SoloProjectCalin/api/user/removeUser/${this.state.userid}`)
             .then(response => {
-                window.alert(response.data);
+                let message = response.data;
+                window.alert(message.message);
                 console.log(response);
             })
     }
@@ -93,8 +94,8 @@ class Home extends Component {
                 password: this.state.password
             })
             .then(function(response) {
-                window.alert(response.data);
-                console.log(response);
+                let message = response.data;
+                window.alert(message.message);
             })
         }
 
@@ -105,8 +106,8 @@ class Home extends Component {
                 password: this.state.password
             })
             .then(function(response) {
-                window.alert(response.data);
-                console.log(response);
+                let message = response.data;
+                window.alert(message.message);
             })
         }
 

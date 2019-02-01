@@ -28,40 +28,44 @@ class Game extends Component {
         // })
     }
 
-    render() {
+    removeDuplicates(array) {
+        let returnValue = [];
+        let len = array.length;
 
-        let uniqueGames = [];
-
-        for (let i = 0; i < this.state.gameData.length; i++) {
-            if (!uniqueGames.includes(this.state.gameData[i].gameName)) {
-                console.log(uniqueGames);
-                uniqueGames.push(this.state.gameData[i])
+        for (let i = 0; i < len; i++) {
+            if (!returnValue.includes(array[i])) {
+                returnValue.push(array[i])
             }
         }
+        return returnValue;
+    }
 
-        console.log(uniqueGames);
+        render() {
 
-        let gameList = uniqueGames.map((game, i) => {
+            let uniqueGames = this.removeDuplicates(this.state.gameData);
+            console.log(uniqueGames);
+
+            let gameList = uniqueGames.map((game, i) => {
+                return (
+                    <div>
+                        <ul className="gameList">
+                            <li className="gameListItem">Title: {game.gameName} </li>
+                            <li className="userListItem">Release Date: {game.releaseYear} </li>
+                            <li className="userListItem">Genre: {game.genre} </li>
+                            <li className="userListItemButton"><button onClick={this.AddListEntry(i)}>AddToList</button></li>
+                        </ul>
+                    </div>
+                );
+            })
+
             return (
-                <div>
+                <div className="Game">
                     <ul>
-                        <li className="userListItem">Title: {game.gameName} </li>
-                        <li className="userListItem">Release Date: {game.releaseYear} </li>
-                        <li className="userListItem">Genre: {game.genre} </li>
-                        <li className="userListItemButton"><button onClick={this.AddListEntry(i)}>AddToList</button></li>
+                        <li className="gameListItem">{gameList}</li>
                     </ul>
                 </div>
             );
-        })
-
-        return (
-            <div className="Game">
-                <ul>
-                    <li className="gameListItem">{gameList}</li>
-                </ul>
-            </div>
-        );
+        }
     }
-}
 
-export default Game;
+    export default Game;
