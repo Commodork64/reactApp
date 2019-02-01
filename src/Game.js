@@ -26,15 +26,19 @@ class Game extends Component {
     }
 
     removeDuplicates(array) {
+        console.log(array);
         let returnValue = [];
-        let len = array.length;
-
-        for (let i = 0; i < len; i++) {
-            if (!returnValue.includes(array[i])) {
-                console.log(this.uniqueGames);
-                returnValue.push(array[i])
+        let found = false;
+        for (let x of array) {
+            found = false;
+            for (let y of returnValue) {
+                found = found || (x.gameName == y.gameName);
+            }
+            if (!found) {
+                returnValue.push(x);
             }
         }
+        console.log(returnValue);
         return returnValue;
     }
 
