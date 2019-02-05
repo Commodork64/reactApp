@@ -9,12 +9,19 @@ class User extends Component {
         super();
 
         this.state = {
-            userData: [{}]
+            userData: [{}],
+            userGamesList: [{}],
+            id: 2
         }
 
         axios.get("http://localhost:8080/SoloProjectCalin/api/user/getAllUsers")
             .then(response => {
                 this.setState({ userData: response.data })
+            })
+
+        axios.get("http://localhost:8080/SoloProjectCalin/api/user/getGamesForUser/" + this.state.id)
+            .then(response => {
+                this.setState({ userGamesList: response.data })
             })
     }
 
@@ -24,45 +31,37 @@ class User extends Component {
 
     render() {
 
-        const getNestedObject = (nestedObj, pathArr) => {
-            return pathArr.reduce((obj, key) =>
-                (obj && obj[key] !== 'undefined') ? obj[key] : undefined, nestedObj);
-        }
-
-        console.log(getNestedObject(this.state.userData[0], ['games', 0]));
-
-        let userGames = this.state.userData.map(( user, i) => {
-            return (
-                <div>
-                    <ul>
-                        <li className="userListItem">Title: {getNestedObject(this.state.userData[0], ['games', i, 'gameName'])}</li>
-                        <li className="userListItem">Release Date: {getNestedObject(this.state.userData[0], ['games', i, 'releaseYear'])}</li>
-                        <li className="userListItem">Genre: {getNestedObject(this.state.userData[0], ['games', i, 'genre'])}</li>
-                        <li className="userListItemButton"><button onClick={this.removeListEntry(i)}>Remove</button></li>
-                        
+        return (
+            <div className="User" >
+                <section>
+                    {console.log("usergame ", this.state.userGamesList)}
+                    <h2 className="userNameTitle">{this.state.userData[0].userName} 's List</h2>
+                    <hr className="hrShadow" />
+                </section>
+                <section className="userDetails">
+                    <ul className="UDListStyle">
+                        <h3 className="userDetailsTitle">Statistics</h3>
+                        <li className="UDListItem">Username: {this.state.userData[0].userName}</li>
+                        <li className="UDListItem">Date of Birth: {this.state.userData[0].dateOfBirth} </li>
                     </ul>
-                </div>
-            );
-        })
-
-    return(
-        <div className = "User" >
-            <section>
-                {console.log(this.state.userData)}
-                <h2 className="userNameTitle">{this.state.userData[0].userName} 's List</h2>
-                <hr className="hrShadow" />
-            </section>
-            <section className="userDetails">
-                <ul className="UDListStyle">
-                    <h3 className="userDetailsTitle">Statistics</h3>
-                    <li className="UDListItem">Username: {this.state.userData[0].userName}</li>
-                    <li className="UDListItem">Date of Birth: {this.state.userData[0].dateOfBirth} </li>
-                </ul>
-            </section>
-            <section className="userListContainer">
-                {userGames}
-            </section>
-                </div>
+                </section>
+                <section className="userListContainer">
+                    <div>
+                        {this.state.userGamesList.map((game, i) => {
+                            return (
+                                <div>
+                                    <ul>
+                                        <li className="userListItem">Title: {game.gameName}</li>
+                                        <li className="userListItem">Release year: {game.releaseYear}</li>
+                                        <li className="userListItem">Genre: {game.genre}</li>
+                                        <li className="userListItemButton"><button onClick={this.removeListEntry(i)}>Remove</button></li>
+                                    </ul>
+                                </div>
+                            )
+                        })}
+                    </div>
+                </section>
+            </div>
         );
 
     }
