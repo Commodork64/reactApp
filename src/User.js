@@ -16,7 +16,7 @@ class User extends Component {
 
         axios.get("http://localhost:8080/SoloProjectCalin/api/user/getAllUsers")
             .then(response => {
-                this.setState({ userData: response.data })
+                this.setState({ userData: response.data[this.state.id - 1] })
             })
 
         axios.get("http://localhost:8080/SoloProjectCalin/api/user/getGamesForUser/" + this.state.id)
@@ -34,15 +34,17 @@ class User extends Component {
         return (
             <div className="User" >
                 <section>
-                    {console.log("usergame ", this.state.userGamesList)}
-                    <h2 className="userNameTitle">{this.state.userData[0].userName} 's List</h2>
+                    {console.log("userdata: ", this.state.userData)}
+                    {console.log(this.state.userData.userName)}
+                    <h2 className="userNameTitle">{this.state.userData.userName} 's List</h2>
                     <hr className="hrShadow" />
                 </section>
                 <section className="userDetails">
                     <ul className="UDListStyle">
                         <h3 className="userDetailsTitle">Statistics</h3>
-                        <li className="UDListItem">Username: {this.state.userData[0].userName}</li>
-                        <li className="UDListItem">Date of Birth: {this.state.userData[0].dateOfBirth} </li>
+                        {console.log("line 44: ", this.state.userData)}
+                        <li className="UDListItem">Username: {this.state.userData.userName}</li>
+                        <li className="UDListItem">Date of Birth: {this.state.userData.dateOfBirth} </li>
                     </ul>
                 </section>
                 <section className="userListContainer">
