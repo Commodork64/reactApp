@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Home.css';
 import axios from 'axios';
 
-class Home extends Component {
+class Login extends Component {
 
     constructor() {
 
@@ -11,7 +11,8 @@ class Home extends Component {
         this.state = {
             users: [],
             username: "",
-            password: ""
+            password: "",
+            id: ""
         }}
 
         updateUsername = (event) => {
@@ -33,12 +34,13 @@ class Home extends Component {
                     let password = this.state.password;
                     let username = this.state.username;
                     this.state.users.forEach(function(user) {
-                        if (username === user.userName) {
+                        if (username === user.userName && password === user.password) {
                             sessionStorage.setItem("username", username);
-                            sessionStorage.setItem("password", password);
+                            sessionStorage.setItem("id", user.userid);
                             window.location.reload();
                         }
                     })
+                    alert("Incorrect username or password!")
             })
         }
     render() {
@@ -60,4 +62,4 @@ class Home extends Component {
 
 }
 
-export default Home;
+export default Login;

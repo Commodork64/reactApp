@@ -28,16 +28,24 @@ const NavBar = () => {
                 <li className="NavBarLinks"><Link to="/">Home</Link></li>
                 <li className="NavBarLinks"><Link to="/User">User</Link></li>
                 <li className="NavBarLinks"><Link to="/Game">Game</Link></li>
-                <li className="NavBarUserName" onClick={logOutUser}>Logout</li>
+                <li className="NavBarUserName" onClick={() => {
+                            sessionStorage.removeItem("username");
+                            sessionStorage.removeItem("id");
+                    
+                            window.location.reload();
+                        }
+                }>Logout</li>
                 <li className="NavBarButton"><button>submit</button></li>
             </ul>
         }
     }
 
-    function logOutUser() {
-        sessionStorage.removeItem("username");
-        window.location.reload();
-    }
+    // function logOutUser() {
+    //     sessionStorage.removeItem("username");
+    //     sessionStorage.removeItem("id");
+
+    //     window.location.reload();
+    // }
 
     return (
         <Router>
