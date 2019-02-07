@@ -9,7 +9,8 @@ class Game extends Component {
         super();
 
         this.state = {
-            gameData: []
+            gameData: [],
+            userid: sessionStorage.getItem("id")
         }
 
         axios({
@@ -21,8 +22,14 @@ class Game extends Component {
             })
     }
 
-    AddListEntry(itemToRemove) {
-        // ToBeImplemented
+    AddListEntry() {
+        axios({
+            method: 'post',
+            url: 'http://localhost:8080/SoloProjectCalin/api/game/addGames' + this.state.userid,
+        })
+            .then(response => {
+                alert("game added");
+            })
     }
 
     removeDuplicates(array) {

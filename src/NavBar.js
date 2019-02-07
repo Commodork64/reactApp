@@ -17,10 +17,7 @@ const NavBar = () => {
         if (sessionStorage.getItem("username") == null) {
             return <ul className="NavBar_ul">
                 <li className="NavBarLinks"><Link to="/">Home</Link></li>
-                <li className="NavBarLinks"><Link to="/User">User</Link></li>
-                <li className="NavBarLinks"><Link to="/Game">Game</Link></li>
                 <li className="NavBarUserName"><Link to="/Login">Login</Link></li>
-                <li className="NavBarButton"><button>submit</button></li>
             </ul>
         }
         else {
@@ -35,17 +32,9 @@ const NavBar = () => {
                             window.location.reload();
                         }
                 }>Logout</li>
-                <li className="NavBarButton"><button>submit</button></li>
             </ul>
         }
     }
-
-    // function logOutUser() {
-    //     sessionStorage.removeItem("username");
-    //     sessionStorage.removeItem("id");
-
-    //     window.location.reload();
-    // }
 
     return (
         <Router>
