@@ -1,27 +1,63 @@
-import React from 'react';
+import React, { Component } from 'react';
+import './Home.css';
+import axios from 'axios';
 
-const Logins = (props) => {
+class Home extends Component {
 
-    //console.log(this.props);
-    const { logins } = props; // grab the logins prop and put into local list called logins. #destructuring
-    const loginList = logins.map(login => {
-      return (
-        <div className="login" key={login.id}>Name: { login.name } </div>
-      )
-    })
-    return (
-      <div className="test">
-        <div className="login-list">
-        { loginList }
-        </div>
-        <form>
-          <input type="text" name="userName" />
-          <input type="text" name="password" /> 
-          <button>Submit</button>
-        </form>
-        <p>Sample Text.</p>  
-      </div>
-    );
+    constructor() {
+
+        super();
+
+        this.state = {
+            users: [],
+            username: "",
+            password: ""
+        }}
+
+        updateUsername = (event) => {
+            this.setState({ username: event.target.value });
+        }
+        updatePassword = (event) => {
+            this.setState({ password: event.target.value });
+        }
+
+        setUser = () => {
+            axios({
+                method: 'get',
+                url: 'http://localhost:8080/SoloProjectCalin/api/user/getAllUsers',
+            })
+            .then(response => {
+                this.setState({
+                    users: response.data
+                });
+                    let password = this.state.password;
+                    let username = this.state.username;
+                    this.state.users.forEach(function(user) {
+                        if (username === user.userName) {
+                            sessionStorage.setItem("username", username);
+                            sessionStorage.setItem("password", password);
+                            window.location.reload();
+                        }
+                    })
+            })
+        }
+    render() {
+
+        return (
+            <div className="homePageContainer">
+
+            <form>
+                <label>username</label>
+                <input type="text" onChange={this.updateUsername}></input>
+                <label>password</label>
+                <input type="password" onChange={this.updatePassword}></input>
+                <button type="button" onClick={this.setUser}>wow so good</button>
+            </form>
+                
+            </div>
+        );
+    }
+
 }
 
-export default Logins;
+export default Home;

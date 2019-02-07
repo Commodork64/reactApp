@@ -52,6 +52,7 @@ class Home extends Component {
                     <div>
                         <label>Delete User (Enter ID)</label>
                         <input className="inputBox" type="text" onChange={this.handleIDChange}></input>
+                        <button onClick={this.deleteThisUser}>Delete User</button>
                     </div>
                 </section>
             </div>

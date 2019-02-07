@@ -5,11 +5,6 @@ import './App.css';
 
 class App extends Component {
   state = {
-    login: [
-      {name: "Brother", id: 1},
-      {name: "47", id: 2},
-      {name: "Buddy", id: 3}
-    ]
   }
 
   render() {
