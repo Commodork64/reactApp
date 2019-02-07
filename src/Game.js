@@ -25,7 +25,12 @@ class Game extends Component {
     AddListEntry() {
         axios({
             method: 'post',
-            url: 'http://localhost:8080/SoloProjectCalin/api/game/addGames' + this.state.userid,
+            url: 'http://localhost:8080/SoloProjectCalin/api/game/addGame/' + this.state.userid,
+            data: {
+                gameName: "test",
+                releaseYear: "testyear",
+                genre: "testgenre"
+            }
         })
             .then(response => {
                 alert("game added");
@@ -60,7 +65,7 @@ class Game extends Component {
                         <li className="userListItem">Title: {game.gameName} </li>
                         <li className="userListItem">Release Date: {game.releaseYear} </li>
                         <li className="userListItem">Genre: {game.genre} </li>
-                        <li className="userListItemButton"><button onClick={this.AddListEntry(i)}>AddToList</button></li>
+                        <li className="userListItemButton"><button onClick={this.AddListEntry()}>AddToList</button></li>
                     </ul>
                 </div>
             );
