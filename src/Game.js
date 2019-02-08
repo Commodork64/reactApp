@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Game.css';
 import axios from 'axios';
+import config from 'config';
 
 class Game extends Component {
 
@@ -15,7 +16,7 @@ class Game extends Component {
 
         axios({
             method: 'get',
-            url: 'http://localhost:8080/SoloProjectCalin/api/game/getGames',
+            url: config.api + 'game/getGames',
         })
             .then(response => {
                 this.setState({ gameData: response.data })
@@ -25,7 +26,7 @@ class Game extends Component {
     AddListEntry(name, year, genre) {
         axios({
             method: 'post',
-            url: 'http://localhost:8080/SoloProjectCalin/api/game/addGame',
+            url: config.api + 'game/addGame',
             data: {
                 gameName: name,
                 releaseYear: year,

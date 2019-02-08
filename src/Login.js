@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Home.css';
 import axios from 'axios';
+import config from 'config';
 
 class Login extends Component {
 
@@ -25,7 +26,7 @@ class Login extends Component {
         setUser = () => {
             axios({
                 method: 'get',
-                url: 'http://localhost:8080/SoloProjectCalin/api/user/getAllUsers',
+                url: config.api + 'user/getAllUsers',
             })
             .then(response => {
                 this.setState({

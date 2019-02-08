@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './User.css';
 import axios from 'axios';
+import config from 'config';
 
 class User extends Component {
 
@@ -14,12 +15,12 @@ class User extends Component {
             id: sessionStorage.getItem("id")
         }
 
-        axios.get("http://localhost:8080/SoloProjectCalin/api/user/getAllUsers")
+        axios.get(config.api + "user/getAllUsers")
             .then(response => {
                 this.setState({ userData: response.data[this.state.id - 1] })
             })
 
-        axios.get("http://localhost:8080/SoloProjectCalin/api/user/getGamesForUser/" + this.state.id)
+        axios.get(config.api + "user/getGamesForUser/" + this.state.id)
             .then(response => {
                 this.setState({ userGamesList: response.data })
             })
@@ -28,7 +29,7 @@ class User extends Component {
     removeListEntry(gameid) {
         console.warn(this.state);
 
-        axios.delete('http://localhost:8080/SoloProjectCalin/api/game/removeGame/' + gameid)
+        axios.delete(config.api + 'game/removeGame/' + gameid)
         .then(response => {
             alert("game removed from list.")
         })

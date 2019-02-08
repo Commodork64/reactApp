@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Home.css';
 import N64Logo from './Content/N64Logo.svg';
 import * as axios from 'axios';
+import config from 'config';
 
 class Home extends Component {
 
@@ -79,7 +80,7 @@ class Home extends Component {
         event.preventDefault();
         console.warn(this.state);
 
-        axios.delete(`http://localhost:8080/SoloProjectCalin/api/user/removeUser/${this.state.userid}`)
+        axios.delete(config.api + 'user/removeUser/${this.state.userid}')
             .then(response => {
                 let message = response.data;
                 window.alert(message.message);
@@ -88,7 +89,7 @@ class Home extends Component {
     }
 
     createThisUser = event => {
-        axios.post('http://localhost:8080/SoloProjectCalin/api/user/addUser/',  {
+        axios.post(config.api + 'user/addUser/',  {
                 userName: this.state.userName,
                 dateOfBirth: this.state.dateOfBirth,
                 password: this.state.password
@@ -100,7 +101,7 @@ class Home extends Component {
         }
 
     updateThisUser = event => {
-        axios.put('http://localhost:8080/SoloProjectCalin/api/user/updateUser/' + this.state.userid,  {
+        axios.put(config.api + 'user/updateUser/' + this.state.userid,  {
                 userName: this.state.userName,
                 dateOfBirth: this.state.dateOfBirth,
                 password: this.state.password
