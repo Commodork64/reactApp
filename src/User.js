@@ -25,8 +25,13 @@ class User extends Component {
             })
     }
 
-    removeListEntry(itemToRemove) {
-        // To be implemented
+    removeListEntry(gameid) {
+        console.warn(this.state);
+
+        axios.delete('http://localhost:8080/SoloProjectCalin/api/game/removeGame/' + gameid)
+        .then(response => {
+            alert("game removed from list.")
+        })
     }
 
     loggedIn = () => {
@@ -56,7 +61,7 @@ class User extends Component {
                                 <li className="userListItem">Title: {game.gameName}</li>
                                 <li className="userListItem">Release year: {game.releaseYear}</li>
                                 <li className="userListItem">Genre: {game.genre}</li>
-                                <li className="userListItemButton"><button onClick={this.removeListEntry(i)}>Remove</button></li>
+                                <li className="userListItemButton"><button onClick={() => this.removeListEntry(game.gameid)}>Remove</button></li>
                             </ul>
                         </div>
                     )
