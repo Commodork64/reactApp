@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './User.css';
 import axios from 'axios';
-import config from 'config';
+import config from './config';
 
 class User extends Component {
 

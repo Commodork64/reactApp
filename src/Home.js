@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Home.css';
 import N64Logo from './Content/N64Logo.svg';
 import * as axios from 'axios';
-import config from 'config';
+import config from './config';
 
 class Home extends Component {
 

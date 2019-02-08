@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Home.css';
 import axios from 'axios';
-import config from 'config';
+import config from './config';
 
 class Login extends Component {
 
