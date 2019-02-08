@@ -40,7 +40,6 @@ class Login extends Component {
                             window.location.reload();
                         }
                     })
-                    alert("Incorrect username or password!")
             })
         }
     render() {
